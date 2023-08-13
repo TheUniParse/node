@@ -1,1 +1,14 @@
 lockfileVersion: '6.0'
+
+dependencies:
+  nodenv:
+    specifier: ^0.1.0
+    version: 0.1.0
+
+packages:
+
+  /nodenv@0.1.0:
+    resolution: {integrity: sha512-fajJ9tbIchvqb/D6PXW5ZVfJu4Z79fncDxW9fMdvpTSEMjfUTlGDFEcoH3OC4vH3Erdg/NGZ8cO8ROltfQC3ig==}
+    os: ['!win32']
+    hasBin: true
+    dev: false
