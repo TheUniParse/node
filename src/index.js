@@ -1,15 +1,9 @@
-if (process.env.NODE_ENV !== 'production')
-  require('dotenv').config();
+// import('./envVariables.js')
 
-(async () => {
+// import('./process_args.mjs').then(r => r.logArgs(__filename))
 
-  // import('./event.mjs')
+// import('./event.mjs')
 
-  // import('./server.mjs')
-  // console.log(`env.MYNAME = ${process.env.MYNAME}`)
+// import('./server.mjs')
 
-  // const { logArgs } = await import('./process_args.mjs')
-  // logArgs(__filename)
-
-  // import('./exit.js')
-})();
+// import('./exit.js')
