@@ -12,7 +12,11 @@ const getUsers = () => {
   return users
 }
 
-// routes: get post  put delete
+// Middleware to parse req.body as JSON
+app.use(express.json())
+
+// routes: get post put delete
+
 app.get('/route', (req, res) => {
   // curl http://localhost:3000/route\?userName\=user1
 
@@ -26,10 +30,8 @@ app.get('/route', (req, res) => {
   )
 })
 
-// Middleware to parse req.body as JSON
-app.use(express.json())
 app.post('/route', (req, res) => {
-  // curl -X POST -H "Content-Type: application/json" -d '{"name":"user77","age":77}' http://localhost:3000/route
+  // curl -X POST -H "Content-Type: application/json" -d '{"name":"user5","age":35}' http://localhost:3000/route
 
   const newUser = req.body
   const oldUsers = getUsers()
@@ -55,7 +57,7 @@ app.post('/route', (req, res) => {
 })
 
 app.put('/route', (req, res) => {
-  // curl -X PUT -H "Content-Type: application/json" -d '{"name":"user77","age":70}' http://localhost:3000/route
+  // curl -X PUT -H "Content-Type: application/json" -d '{"name":"user5","age":45}' http://localhost:3000/route
 
   const newUser = req.body
   const oldUsers = getUsers()
@@ -83,7 +85,7 @@ app.put('/route', (req, res) => {
 })
 
 app.delete('/route', (req, res) => {
-  // curl -X DELETE -H "Content-Type: application/json" -d '{"deletedUser":"user77"}' http://localhost:3000/route
+  // curl -X DELETE -H "Content-Type: application/json" -d '{"deletedUser":"user5"}' http://localhost:3000/route
 
   const { deletedUser } = req.body
   const oldUsers = getUsers()
@@ -109,8 +111,7 @@ app.delete('/route', (req, res) => {
   res.send(`deleted the user ${deletedUser} successfully.`)
 })
 
-
-
+// listener
 app.listen(port, () =>
   console.log(`express app listen at port ${port}`)
 )
