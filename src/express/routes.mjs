@@ -12,10 +12,10 @@ const getUsers = () => {
   return users
 }
 
-// Middleware to parse req.body as JSON
+// Middleware, parse req.body as JSON
 app.use(express.json())
 
-// routes: get post put delete
+// routes: get post put delete ..........................
 
 app.get('/route', (req, res) => {
   // curl http://localhost:3000/route\?userName\=user1
@@ -111,7 +111,7 @@ app.delete('/route', (req, res) => {
   res.send(`deleted the user ${deletedUser} successfully.`)
 })
 
-// listener
+// listener .............................................
 app.listen(port, () =>
   console.log(`express app listen at port ${port}`)
 )
