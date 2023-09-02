@@ -1,7 +1,7 @@
 import { createServer } from 'http'
 
 const host = 'localhost'
-const port = 8000
+const port = 3000
 
 const books = JSON.stringify([
   { title: 'title1', author: 'author1', publishedYear: 2021 },
@@ -62,5 +62,5 @@ const requestListener = (req, res) => {
 const server = createServer(requestListener)
 
 server.listen(port, host, () =>
-  console.log(`server running at http://${host}:${port}/books or http://${host}:${port}/authors`)
+  console.log(`server running at http://${host}:${port}`)
 )

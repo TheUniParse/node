@@ -17,21 +17,22 @@ app.use(express.json())
 
 // routes: get post put delete ..........................
 
-app.get('/route', (req, res) => {
-  // curl http://localhost:3000/route\?userName\=user1
+app.get('/users/:userName', (req, res) => {
+  // curl http://localhost:3000/users/user1
 
-  const { userName } = req.query
+  const { userName } = req.params
   const users = getUsers()
   const user = users.find(user => user.name === userName)
 
-  res.send(user ?
-    `the age of the user ${userName} is ${user.age} !\n`
-    : `there is no userName ${userName} in database !\n`
-  )
+  if (user) res
+    .send(`the age of ${userName} is ${user.age} !\n`)
+  else res
+    .status(404)
+    .send(`there is no userName ${userName} in database !\n`)
 })
 
-app.post('/route', (req, res) => {
-  // curl -X POST -H "Content-Type: application/json" -d '{"name":"user5","age":35}' http://localhost:3000/route
+app.post('/users', (req, res) => {
+  // curl -X POST -H "Content-Type: application/json" -d '{"name":"user5","age":35}' http://localhost:3000/users
 
   const newUser = req.body
   const oldUsers = getUsers()
@@ -53,11 +54,13 @@ app.post('/route', (req, res) => {
   const newUsersJson = JSON.stringify(newUsers, null, 2)
   fs.writeFileSync(usersPath, newUsersJson)
 
-  res.send(`the user ${newUser.name} added successfully.`)
+  res
+    .status(201)
+    .send(`the user ${newUser.name} added successfully.`)
 })
 
-app.put('/route', (req, res) => {
-  // curl -X PUT -H "Content-Type: application/json" -d '{"name":"user5","age":45}' http://localhost:3000/route
+app.put('/users', (req, res) => {
+  // curl -X PUT -H "Content-Type: application/json" -d '{"name":"user5","age":45}' http://localhost:3000/users
 
   const newUser = req.body
   const oldUsers = getUsers()
@@ -84,10 +87,10 @@ app.put('/route', (req, res) => {
   res.send(`the user ${newUser.name} ${userExist ? 'updated' : 'added'} successfully.`)
 })
 
-app.delete('/route', (req, res) => {
-  // curl -X DELETE -H "Content-Type: application/json" -d '{"deletedUser":"user5"}' http://localhost:3000/route
+app.delete('/users/:deletedUser', (req, res) => {
+  // curl -X DELETE http://localhost:3000/users/user5
 
-  const { deletedUser } = req.body
+  const { deletedUser } = req.params
   const oldUsers = getUsers()
 
   // check if user exist

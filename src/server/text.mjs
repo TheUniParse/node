@@ -1,7 +1,7 @@
 import { createServer } from 'http'
 
 const host = 'localhost'
-const port = 8000
+const port = 3000
 
 const requestListener = (req, res) => {
   res.setHeader('Content-Type', 'text/plain')
@@ -12,5 +12,5 @@ const requestListener = (req, res) => {
 const server = createServer(requestListener)
 
 server.listen(port, host, () =>
-  console.log(`server running at http://${host}:${port}`)
+  console.log(`Server running at http://${host}:${port}`)
 )

@@ -5,7 +5,7 @@ program
   .version('1.0.0')
   // node commander.mjs --version | -V
   .description('A simple cli tool to greets the user')
-  // node commander.mjs --help | -h
+// node commander.mjs --help | -h
 
 program
   .command('greet')
