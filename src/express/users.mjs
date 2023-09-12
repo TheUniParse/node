@@ -2,7 +2,6 @@ import express from 'express'
 import fs from 'fs'
 import path from 'path'
 
-const port = 3000
 const app = express()
 
 const usersPath = path.join(process.cwd(), 'db', 'users.json')
@@ -115,6 +114,7 @@ app.delete('/users/:deletedUser', (req, res) => {
 })
 
 // listener .............................................
+const port = 3000
 app.listen(port, () =>
   console.log(`express app listen at port ${port}`)
 )
